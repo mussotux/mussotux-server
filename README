@@ -1,0 +1,48 @@
+For running server [ uncompiled mode ]
+-----------------------------------------------------
+.install python
+
+easy_install MySQLdb or yum install MySQLdb-python
+
+easy_install twisted or yum install twisted-python
+
+create a databse named chat
+
+import chart.sql for dummy data
+
+
+server file info
+---------------------------
+chat.py ------------------------------- [ core server script ]
+hexskip.py ---------------------------- [ java bug solution script ]
+server.log ---------------------------- [ server log file ]
+config.ini ---------------------------- [ server configuration file ]
+server.key ---------------------------- [ RSA 1024bit encryption key ]
+server.crt ---------------------------- [ server certificate key ]
+
+Config.ini file
+--------------------------
+ServerName ---------------------------- [ server name - Makes no change in server except naming instance ]
+port	   ---------------------------- [Server Port no must be free and available to run the instance ]
+mysql_sock ---------------------------- [ Mysql socket path -Must be valid filename mysql.sock ]
+encryption ---------------------------- [ switch encryption mode either to ssl or none ]
+
+Howto start server
+-----------------------
+$ python chat.py
+ [ done ]
+
+Signals and Responses
+------------------------
+To communicate with server there are certain rules which any developer can follow to develop client app for the server .
+
+Initially should talk to server socket for validation
+eg 
+ $. telnet <hostname> <port>
+    enter 
+    'username password'
+	response will be either success or sorry invalid credentials
+	
+
+
+

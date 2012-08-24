@@ -1,0 +1,31 @@
+import java.io.*;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+public class client {
+   public static void main(String[] args) {
+      BufferedReader in = new BufferedReader(
+         new InputStreamReader(System.in));
+      PrintStream out = System.out;
+      SSLSocketFactory f = 
+         (SSLSocketFactory) SSLSocketFactory.getDefault();
+      try {
+         SSLSocket c =
+           (SSLSocket) f.createSocket("localhost", 4045);
+         c.startHandshake();
+         BufferedReader r = new BufferedReader(
+            new InputStreamReader(c.getInputStream()));
+	 DataOutputStream dout = new DataOutputStream(c.getOutputStream());
+ String m = null;
+        while ((m=r.readLine())!= null) {
+            out.println(m);
+            //d.write("raju",0,4);
+            dout.writeUTF("raju");
+}
+         r.close();
+         c.close();
+      } catch (IOException e) {
+         System.err.println(e.toString());
+      }
+   }
+   
+}
